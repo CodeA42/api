@@ -13,7 +13,12 @@
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
-    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "typeorm": "node -r tsconfig-paths/register -r ts-node/register ./node_modules/typeorm/cli.js -d src/modules/db/database.providers.ts",
+    "migration:run": "npm run typeorm migration:run",
+    "migration:show": "npm run typeorm migration:show",
+    "build:image": "docker build -t coursework-1901321002 .",
+    "container:dev": "npm run build:image && docker compose --env-file .dev.env up --remove-orphans --renew-anon-volumes"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
