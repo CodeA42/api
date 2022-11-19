@@ -29,6 +29,12 @@
 ## Running the app
 
 ```bash
-# development
+# development in container
 $ npm run container:dev
+
+# development only db in container
+$ npm run container:db
+$ npm run start:dev
+# debug
+$ npm run start:debug
 ```
