@@ -12,7 +12,7 @@ async function bootstrap() {
 
   app.setGlobalPrefix('api');
   app.use(cookieParser());
-  app.use(new ValidationPipe());
+  app.useGlobalPipes(new ValidationPipe());
   const httpAdapter = app.get(HttpAdapterHost);
   app.useGlobalFilters(new GenericErrorFilter(httpAdapter));
   await app.listen(configService.get<number>(server.port) || 3000);
