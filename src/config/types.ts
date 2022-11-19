@@ -12,3 +12,11 @@ export enum server {
   protocol = 'SERVER_PROTOCOL',
   host = 'SERVER_HOST',
 }
+
+export enum authentication {
+  accessTokenSecret = 'ACCESS_TOKEN_SECRET',
+  refreshTokenSecret = 'REFRESH_TOKEN_SECRET',
+  accessTokenDuration = 'ACCESS_TOKEN_DURATION',
+  refreshTokenDuration = 'REFRESH_TOKEN_DURATION',
+  saltRounds = 'SALT_ROUNDS',
+}
