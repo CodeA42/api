@@ -6,3 +6,9 @@ export enum database {
   password = 'DATABASE_PASSWORD',
   name = 'DATABASE_NAME',
 }
+
+export enum server {
+  port = 'SERVER_PORT',
+  protocol = 'SERVER_PROTOCOL',
+  host = 'SERVER_HOST',
+}
