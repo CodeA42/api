@@ -1,3 +1,17 @@
+export class EmailExistsError extends Error {
+  constructor(message = 'Email exists') {
+    super(message);
+    this.name = 'EmailExistsError';
+  }
+}
+
+export class UsernameExistsError extends Error {
+  constructor(message = 'Username exists') {
+    super(message);
+    this.name = 'UsernameExistsError';
+  }
+}
+
 export class MissingTokenError extends Error {
   constructor(message = 'Missing token') {
     super(message);
