@@ -88,7 +88,7 @@ export class AuthenticationGuard implements CanActivate {
   }
 
   getSecret(secret: string): string {
-    return this.configService.get(secret);
+    return this.configService.get<string>(secret);
   }
 
   async isValidToken(data: JwtPayload): Promise<boolean> {
