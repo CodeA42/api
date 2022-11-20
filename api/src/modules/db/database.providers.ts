@@ -4,6 +4,8 @@ import { database } from 'src/config/types';
 import * as dotenv from 'dotenv';
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { DatabaseKeys } from 'src/@types/app.types';
+import User from '../user/entities/user.entity';
+import Token from '../authentication/entities/token.entity';
 
 let dataSourceOptions: DataSourceOptions;
 
@@ -33,7 +35,7 @@ export function getDataSource(isCli: boolean): DataSource {
     username: process.env[database.username],
     password: process.env[database.password],
     database: process.env[database.name],
-    entities: [],
+    entities: [User, Token],
     migrations: [migrationsLocation],
   };
 

@@ -17,6 +17,7 @@
     "typeorm": "node -r tsconfig-paths/register -r ts-node/register ./node_modules/typeorm/cli.js -d src/modules/db/database.providers.ts",
     "migration:run": "npm run typeorm migration:run",
     "migration:show": "npm run typeorm migration:show",
+    "migration:generate":"npm run typeorm migration:generate",
     "build:image": "docker build -t coursework-1901321002 .",
     "container:dev": "npm run build:image && docker compose --env-file .dev.env up --remove-orphans --renew-anon-volumes",
     "container:db": "docker compose -f docker-compose.db.yml --env-file .dev.env up --remove-orphans --renew-anon-volumes -d"
