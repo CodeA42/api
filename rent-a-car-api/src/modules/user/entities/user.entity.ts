@@ -24,13 +24,33 @@ export default class User {
 
   @Column({
     type: 'text',
-    nullable: true,
   })
-  phoneNumber: string;
+  phoneNumber!: string;
 
   @Column({
     type: 'text',
     nullable: true,
   })
   logout: string;
+
+  @Column({
+    type: 'text',
+  })
+  firstName!: string;
+
+  @Column({
+    type: 'text',
+  })
+  lastName!: string;
+
+  @Column({
+    length: 10,
+  })
+  accountType: string;
+
+  @Column({
+    type: 'text',
+    nullable: true,
+  })
+  rentedVehicles: string;
 }
