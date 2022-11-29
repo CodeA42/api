@@ -4,3 +4,5 @@ export class DatabaseKeys {
   static TOKEN_REPOSITORY = 'TOKEN_REPOSITORY';
   static VEHICLE_REPOSITORY = 'VEHICLE_REPOSITORY';
 }
+
+export type SortOrder = 'ASC' | 'DESC';

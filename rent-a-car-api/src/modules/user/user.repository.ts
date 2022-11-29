@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { DatabaseKeys } from 'src/@types/app.types';
+import { DatabaseKeys } from 'src/utils/@types/app.types';
 import { Repository } from 'typeorm';
 import User from './entities/user.entity';
 import { UserNotFoundError } from './types/user.errors';

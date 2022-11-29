@@ -1,4 +1,4 @@
-import { DatabaseKeys } from 'src/@types/app.types';
+import { DatabaseKeys } from 'src/utils/@types/app.types';
 import { DataSource } from 'typeorm';
 import Vehicle from './vehicle.entiity';
 

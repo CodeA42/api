@@ -3,7 +3,7 @@ import { getEnvFilePath } from 'src/config/envFilePath';
 import { database } from 'src/config/types';
 import * as dotenv from 'dotenv';
 import { DataSource, DataSourceOptions } from 'typeorm';
-import { DatabaseKeys } from 'src/@types/app.types';
+import { DatabaseKeys } from 'src/utils/@types/app.types';
 import User from '../user/entities/user.entity';
 import Token from '../authentication/entities/token.entity';
 

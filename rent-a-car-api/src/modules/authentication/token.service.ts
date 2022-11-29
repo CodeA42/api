@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { decode, Secret, sign } from 'jsonwebtoken';
-import { DatabaseKeys } from 'src/@types/app.types';
+import { DatabaseKeys } from 'src/utils/@types/app.types';
 import { authentication } from 'src/config/types';
 import { Repository } from 'typeorm';
 import Token from './entities/token.entity';
