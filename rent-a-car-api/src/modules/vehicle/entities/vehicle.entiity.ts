@@ -1,49 +1,63 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { ApiProperty } from '@nestjs/swagger'
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm'
 
 @Entity()
 export default class Vehicle {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id: string
 
   @Column({
     type: 'integer',
     length: 10,
   })
   @ApiProperty()
-  type!: string;
+  type!: string
 
   @Column({
     type: 'text',
   })
   @ApiProperty()
-  brand!: string;
+  brand!: string
 
   @Column({
     type: 'text',
   })
   @ApiProperty()
-  model!: string;
+  model!: string
 
   @Column()
   @ApiProperty()
-  constructionYear!: number;
+  constructionYear!: number
 
   @Column({
     length: 10,
   })
   @ApiProperty()
-  fuelType!: string;
+  fuelType!: string
 
   @Column({
     type: 'integer',
   })
   @ApiProperty()
-  numberOfSeats: number;
+  numberOfSeats: number
 
   @Column({
     type: 'text',
     nullable: true,
   })
-  picture: string;
+  picture: string
+
+  @ApiProperty()
+  @CreateDateColumn({ type: 'timestamp' })
+  createdAt: Date
+
+  @ApiProperty()
+  @UpdateDateColumn({ type: 'timestamp' })
+  updatedAt: Date
 }
