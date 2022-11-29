@@ -1,56 +1,57 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { userType } from '../types/user.types'
 
 @Entity()
 export default class User {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id: string
 
   @Column({
     length: 24,
     unique: true,
   })
-  username: string;
+  username: string
 
   @Column({
     type: 'text',
   })
-  password: string;
+  password: string
 
   @Column({
     type: 'text',
     unique: true,
   })
-  email: string;
+  email: string
 
   @Column({
     type: 'text',
   })
-  phoneNumber!: string;
+  phoneNumber!: string
 
   @Column({
     type: 'text',
     nullable: true,
   })
-  logout: string;
+  logout: string
 
   @Column({
     type: 'text',
   })
-  firstName!: string;
+  firstName!: string
 
   @Column({
     type: 'text',
   })
-  lastName!: string;
+  lastName!: string
 
   @Column({
     length: 10,
   })
-  accountType: string;
+  accountType: userType
 
   @Column({
     type: 'text',
     nullable: true,
   })
-  rentedVehicles: string;
+  rentedVehicles: string
 }
