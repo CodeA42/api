@@ -17,6 +17,19 @@ export function ApiAddVehicle() {
   )
 }
 
+export function ApiGetVehicle() {
+  return applyDecorators(
+    ApiOkResponse({
+      description: 'Complicated explenation that no one will ever read',
+    }),
+    ApiForbiddenResponse({
+      description:
+        'There is actually no such return im jus messin wich ya m man',
+    }),
+    ApiBearerAuth(authType.accessToken),
+  )
+}
+
 export function ApiUpdateVehicle() {
   return applyDecorators(
     ApiOkResponse({ description: 'Vehicle updated successfully' }),
