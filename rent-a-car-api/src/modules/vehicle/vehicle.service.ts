@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { IPaginationOptions, Pagination } from 'nestjs-typeorm-paginate'
 import { SortOrder } from 'src/utils/@types/app.types'
+import { DeleteResult } from 'typeorm'
 import Vehicle from './entities/vehicle.entiity'
 import { VehicleOrderBy } from './types/vehicle.types'
 import { VehicleRepository } from './vehicle.repository'
@@ -30,7 +31,7 @@ export class VehicleService {
     return this.vehicleRepository.findOneByIdOrFail(uuid)
   }
 
-  deleteVehicle(uuid: string) {
+  deleteVehicle(uuid: string): Promise<DeleteResult> {
     return this.vehicleRepository.delete({ id: uuid })
   }
 }

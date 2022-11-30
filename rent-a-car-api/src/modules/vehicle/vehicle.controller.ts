@@ -12,6 +12,7 @@ import {
 } from '@nestjs/common'
 import { Pagination } from 'nestjs-typeorm-paginate'
 import { SortOrder } from 'src/utils/@types/app.types'
+import { DeleteResult } from 'typeorm'
 import { Authentication } from '../authentication/decorators/authentication.decorator'
 import { Roles } from '../authentication/decorators/roles.decorator'
 import { authType } from '../authentication/types/authentication.types'
@@ -73,7 +74,9 @@ export class VehicleController {
   @Delete(':uuid')
   @Roles(userRole.admin)
   @Authentication(authType.accessToken)
-  async deleteVehicle(@Param('uuid', ParseUUIDPipe) uuid: string) {
+  async deleteVehicle(
+    @Param('uuid', ParseUUIDPipe) uuid: string,
+  ): Promise<DeleteResult> {
     return this.vehicleService.deleteVehicle(uuid)
   }
 }
