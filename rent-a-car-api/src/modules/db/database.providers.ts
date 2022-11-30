@@ -1,32 +1,32 @@
-import { join } from 'path';
-import { getEnvFilePath } from 'src/config/envFilePath';
-import { database } from 'src/config/types';
-import * as dotenv from 'dotenv';
-import { DataSource, DataSourceOptions } from 'typeorm';
-import { DatabaseKeys } from 'src/utils/@types/app.types';
-import User from '../user/entities/user.entity';
-import Token from '../authentication/entities/token.entity';
+import { join } from 'path'
+import { getEnvFilePath } from 'src/config/envFilePath'
+import { database } from 'src/config/types'
+import * as dotenv from 'dotenv'
+import { DataSource, DataSourceOptions } from 'typeorm'
+import { DatabaseKeys } from 'src/utils/@types/app.types'
+import User from '../user/entities/user.entity'
+import Token from '../authentication/entities/token.entity'
 
-let dataSourceOptions: DataSourceOptions;
+let dataSourceOptions: DataSourceOptions
 
 export const databaseProviders = [
   {
     provide: DatabaseKeys.DATA_SOURCE,
     imports: [],
     useFactory: async () => {
-      const dataSource = getDataSource(false);
+      const dataSource = getDataSource(false)
 
-      return dataSource.initialize();
+      return dataSource.initialize()
     },
     inject: [],
   },
-];
+]
 
 export function getDataSource(isCli: boolean): DataSource {
-  dotenv.config({ path: getEnvFilePath() });
+  dotenv.config({ path: getEnvFilePath() })
   const migrationsLocation = isCli
     ? 'src/modules/db/migrations/*.ts'
-    : join(__dirname, 'modules', 'db', 'migrations', '*.ts');
+    : join(__dirname, 'modules', 'db', 'migrations', '*.ts')
 
   dataSourceOptions = {
     type: 'postgres',
@@ -37,9 +37,9 @@ export function getDataSource(isCli: boolean): DataSource {
     database: process.env[database.name],
     entities: [User, Token],
     migrations: [migrationsLocation],
-  };
+  }
 
-  return new DataSource(dataSourceOptions);
+  return new DataSource(dataSourceOptions)
 }
 
-export const OrmConfig = getDataSource(true);
+export const OrmConfig = getDataSource(true)

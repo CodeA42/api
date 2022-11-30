@@ -1,4 +1,4 @@
-import { SetMetadata } from '@nestjs/common';
+import { SetMetadata } from '@nestjs/common'
 
 export const Authentication = (authentication: string) =>
-  SetMetadata('authentication', authentication);
+  SetMetadata('authentication', authentication)

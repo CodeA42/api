@@ -1,6 +1,6 @@
-import { DatabaseKeys } from 'src/utils/@types/app.types';
-import { DataSource } from 'typeorm';
-import Token from 'src/modules/authentication/entities/token.entity';
+import { DatabaseKeys } from 'src/utils/@types/app.types'
+import { DataSource } from 'typeorm'
+import Token from 'src/modules/authentication/entities/token.entity'
 
 export const tokenProviders = [
   {
@@ -8,4 +8,4 @@ export const tokenProviders = [
     useFactory: (dataSource: DataSource) => dataSource.getRepository(Token),
     inject: [DatabaseKeys.DATA_SOURCE],
   },
-];
+]

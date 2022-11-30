@@ -4,6 +4,6 @@ export declare const enum authType {
 }
 
 export interface NewPassword {
-  oldPassword: string;
-  newPassword: string;
+  oldPassword: string
+  newPassword: string
 }

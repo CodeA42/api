@@ -1,17 +1,17 @@
-export {};
+export {}
 
 declare module 'express' {
   interface Request {
     user: {
-      id: string;
-      username: string;
-      email: string;
-    };
+      id: string
+      username: string
+      email: string
+    }
   }
 }
 
 export type JwtPayload = {
-  user: TokenUser;
-  iat: number;
-  exp: number;
-};
+  user: TokenUser
+  iat: number
+  exp: number
+}

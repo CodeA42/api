@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger'
 import {
   IsAlphanumeric,
   IsEmail,
@@ -9,7 +9,7 @@ import {
   Matches,
   MinLength,
   ValidateIf,
-} from 'class-validator';
+} from 'class-validator'
 
 export class UserAuthDto {
   @ApiProperty({
@@ -18,7 +18,7 @@ export class UserAuthDto {
   })
   @IsAlphanumeric()
   @IsNotEmpty()
-  username: string;
+  username: string
 
   @ApiProperty({
     description:
@@ -32,7 +32,7 @@ export class UserAuthDto {
     message:
       'Password must be 8 characters long contain at least one letter and number',
   })
-  password: string;
+  password: string
 
   @ApiProperty({
     example: 'oh@hi.com',
@@ -40,20 +40,20 @@ export class UserAuthDto {
   })
   @IsEmail()
   @IsNotEmpty()
-  email: string;
+  email: string
 }
 
 export class TokenUserDto {
   @IsNotEmpty()
   @IsUUID()
-  id: string;
+  id: string
 
   @IsNotEmpty()
-  username: string;
+  username: string
 
   @IsNotEmpty()
   @IsEmail()
-  email: string;
+  email: string
 }
 
 export class AccessTokenResponseDto {
@@ -63,7 +63,7 @@ export class AccessTokenResponseDto {
     example:
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiZjIyZDk3M2YtNzgwNC00MWY1LTk5ZDMtYjY5ODJhNmRmOGEyIiwidXNlcm5hbWUiOiJtYXJrIiwiZW1haWwiOiJvaEBoaS5jb20ifSwiaWF0IjoxNjUyNTM2NjI4LCJleHAiOjI1MTY1MzY2Mjh9.Ql9AhreH2sAqm42qTa_s7K3T6W5hqui0ziRj6Z4EhAg',
   })
-  accessToken: string;
+  accessToken: string
 }
 
 export class LoginAuthDto {
@@ -74,11 +74,11 @@ export class LoginAuthDto {
   })
   @ValidateIf((o) => o.username || !o.email, { always: true })
   @IsNotEmpty()
-  username?: string;
+  username?: string
 
   @ApiProperty({ name: 'password', type: String, example: 'ohhimark' })
   @IsNotEmpty()
-  password: string;
+  password: string
 
   @ApiProperty({
     example: 'oh@hi.com',
@@ -89,5 +89,5 @@ export class LoginAuthDto {
   @IsNotEmpty()
   @IsOptional()
   @IsEmail()
-  email?: string;
+  email?: string
 }

@@ -1,4 +1,4 @@
-import { applyDecorators } from '@nestjs/common';
+import { applyDecorators } from '@nestjs/common'
 import {
   ApiBadRequestResponse,
   ApiConflictResponse,
@@ -9,18 +9,18 @@ import {
   ApiOkResponse,
   ApiTags,
   ApiUnauthorizedResponse,
-} from '@nestjs/swagger';
-import { ExceptionDto } from 'src/filters/dto';
-import { SwaggerDoc } from 'src/swagger/swagger.options';
-import { UserIdResponseDto } from '../user/types/user.dtos';
-import { AccessTokenResponseDto } from './types/authentication.dto';
-import { authType } from './types/authentication.types';
+} from '@nestjs/swagger'
+import { ExceptionDto } from 'src/filters/dto'
+import { SwaggerDoc } from 'src/swagger/swagger.options'
+import { UserIdResponseDto } from '../user/types/user.dtos'
+import { AccessTokenResponseDto } from './types/authentication.dto'
+import { authType } from './types/authentication.types'
 
 export function ApiAuthenticationController() {
   return applyDecorators(
     ApiTags('Authentication'),
     ApiInternalServerErrorResponse(SwaggerDoc.defaultException),
-  );
+  )
 }
 
 export function ApiRegister() {
@@ -51,7 +51,7 @@ export function ApiRegister() {
         },
       },
     }),
-  );
+  )
 }
 
 export function ApiLogin() {
@@ -90,7 +90,7 @@ export function ApiLogin() {
         },
       },
     }),
-  );
+  )
 }
 
 export function ApiRefresh() {
@@ -122,7 +122,7 @@ export function ApiRefresh() {
         },
       },
     }),
-  );
+  )
 }
 
 export function ApiLogout() {
@@ -139,7 +139,7 @@ export function ApiLogout() {
         },
       },
     }),
-  );
+  )
 }
 
 export function ApiLogoutAll() {
@@ -150,5 +150,5 @@ export function ApiLogoutAll() {
       description: 'The refresh token is invalisd',
       type: ExceptionDto,
     }),
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import { ApiResponseOptions } from '@nestjs/swagger';
+import { ApiResponseOptions } from '@nestjs/swagger'
 export class SwaggerDoc {
   static defaultException: ApiResponseOptions = {
     description: 'Any oher error will throw the following.',
@@ -8,7 +8,7 @@ export class SwaggerDoc {
         message: 'Internal Server Error',
       },
     },
-  };
+  }
   static unauthorizedResponse: ApiResponseOptions = {
     description:
       'Returned when the access token is invalid or the user has insufficient rights.',
@@ -19,7 +19,7 @@ export class SwaggerDoc {
         message: 'Unauthorized',
       },
     },
-  };
+  }
   static missingJwtResponse: ApiResponseOptions = {
     description: 'No token no service',
     schema: {
@@ -29,5 +29,5 @@ export class SwaggerDoc {
         message: 'Authentication token missing',
       },
     },
-  };
+  }
 }

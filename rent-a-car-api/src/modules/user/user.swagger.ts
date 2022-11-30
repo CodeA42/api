@@ -1,4 +1,4 @@
-import { applyDecorators } from '@nestjs/common';
+import { applyDecorators } from '@nestjs/common'
 import {
   ApiBadRequestResponse,
   ApiBearerAuth,
@@ -8,9 +8,9 @@ import {
   ApiOkResponse,
   ApiTags,
   ApiUnauthorizedResponse,
-} from '@nestjs/swagger';
-import { authType } from 'src/modules/authentication/types/authentication.types';
-import { SwaggerDoc } from 'src/swagger/swagger.options';
+} from '@nestjs/swagger'
+import { authType } from 'src/modules/authentication/types/authentication.types'
+import { SwaggerDoc } from 'src/swagger/swagger.options'
 
 export function ApiUserController() {
   return applyDecorators(
@@ -18,7 +18,7 @@ export function ApiUserController() {
     ApiInternalServerErrorResponse(SwaggerDoc.defaultException),
     ApiBearerAuth(authType.accessToken),
     ApiTags('User'),
-  );
+  )
 }
 
 export function ApiGetUser() {
@@ -53,7 +53,7 @@ export function ApiGetUser() {
         },
       },
     }),
-  );
+  )
 }
 
 export function ApiChangePassword() {
@@ -61,5 +61,5 @@ export function ApiChangePassword() {
     ApiOkResponse({ description: 'Password changed successfully' }),
     ApiForbiddenResponse({ description: 'Wrong password' }),
     ApiBearerAuth(authType.accessToken),
-  );
+  )
 }

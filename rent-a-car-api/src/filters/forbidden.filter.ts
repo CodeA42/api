@@ -1,10 +1,5 @@
-import {
-  ArgumentsHost,
-  Catch,
-  HttpException,
-  HttpStatus,
-} from '@nestjs/common';
-import GenericErrorFilter from './generic.filter';
+import { ArgumentsHost, Catch, HttpException, HttpStatus } from '@nestjs/common'
+import GenericErrorFilter from './generic.filter'
 
 @Catch()
 export default class ForbiddenErrorFilter extends GenericErrorFilter {
@@ -12,8 +7,8 @@ export default class ForbiddenErrorFilter extends GenericErrorFilter {
     const response = {
       statusCode: HttpStatus.FORBIDDEN,
       message: err.message,
-    };
+    }
 
-    super.catch(new HttpException(response, response.statusCode), host);
+    super.catch(new HttpException(response, response.statusCode), host)
   }
 }
