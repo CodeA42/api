@@ -2,7 +2,7 @@ import { Global, Module } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { BcryptModule } from '../bcrypt/bcrypt.module'
 import { DatabaseModule } from '../db/database.module'
-import { userRepositoryProvider } from './entities/user.providers'
+import { UserRepositoryProvider } from './entities/user.provider'
 import { UserController } from './user.controller'
 import { UserRepository } from './user.repository'
 import { UserService } from './user.service'
@@ -14,7 +14,7 @@ import { UserService } from './user.service'
   providers: [
     ConfigService,
     UserService,
-    userRepositoryProvider,
+    UserRepositoryProvider,
     UserRepository,
   ],
   exports: [UserService],
