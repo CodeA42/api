@@ -12,16 +12,11 @@ export class AuthorizationGurad implements CanActivate {
     if (!roles) {
       return true
     }
-
-    const isAuthorized = true //If none of the guards stop the user he is free to proceed
-
     const req: Request = context.switchToHttp().getRequest()
     const user = req.user
-
-    if (roles.includes('admin') && user.role !== 'admin') {
-      return false
+    if (user.role === 'admin') {
+      return true
     }
-
-    return isAuthorized
+    return !roles.includes('admin')
   }
 }
