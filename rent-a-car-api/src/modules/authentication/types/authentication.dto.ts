@@ -54,6 +54,10 @@ export class TokenUserDto {
   @IsNotEmpty()
   @IsEmail()
   email: string
+
+  @IsNotEmpty()
+  @IsString()
+  role: string
 }
 
 export class AccessTokenResponseDto {
