@@ -1,5 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
-import { userType } from '../types/user.types'
+import { userRole } from '../types/user.types'
 
 @Entity()
 export default class User {
@@ -47,7 +47,7 @@ export default class User {
   @Column({
     length: 10,
   })
-  accountType: userType
+  role!: userRole
 
   @Column({
     type: 'text',

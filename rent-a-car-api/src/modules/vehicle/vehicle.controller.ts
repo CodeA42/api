@@ -15,7 +15,7 @@ import { SortOrder } from 'src/utils/@types/app.types'
 import { Authentication } from '../authentication/decorators/authentication.decorator'
 import { Roles } from '../authentication/decorators/roles.decorator'
 import { authType } from '../authentication/types/authentication.types'
-import { userType } from '../user/types/user.types'
+import { userRole } from '../user/types/user.types'
 import Vehicle from './entities/vehicle.entiity'
 import { VehicleOrderByPipe } from './pipes/vehicle.pipe'
 import { VehicleOrderBy } from './types/vehicle.types'
@@ -71,7 +71,7 @@ export class VehicleController {
   @HttpCode(200)
   @ApiDeleteVehicle()
   @Delete(':uuid')
-  @Roles(userType.admin)
+  @Roles(userRole.admin)
   @Authentication(authType.accessToken)
   async deleteVehicle(@Param('uuid', ParseUUIDPipe) uuid: string) {
     return this.vehicleService.deleteVehicle(uuid)
