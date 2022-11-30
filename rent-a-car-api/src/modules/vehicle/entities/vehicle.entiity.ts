@@ -14,7 +14,6 @@ export default class Vehicle {
 
   @Column({
     type: 'integer',
-    length: 10,
   })
   @ApiProperty()
   type!: string
