@@ -35,23 +35,23 @@ export class UserService {
     }
   }
 
-  findByIdOrFail(userId: string) {
+  findByIdOrFail(userId: string): Promise<User> {
     return this.userRepository.findByIdOrFail(userId)
   }
 
-  findByUsernameOrFail(username: string) {
+  findByUsernameOrFail(username: string): Promise<User> {
     return this.userRepository.findByUsernameOrFail(username)
   }
 
-  findByEmailOrFail(email: string) {
+  findByEmailOrFail(email: string): Promise<User> {
     return this.userRepository.findByEmailOrFail(email)
   }
 
-  insertUser(username: string, password: string, email: string) {
+  insertUser(username: string, password: string, email: string): Promise<User> {
     return this.userRepository.insertUser(username, password, email)
   }
 
-  updateLogoutTime(userId: string) {
+  updateLogoutTime(userId: string): Promise<UpdateResult> {
     return this.userRepository.updateLogoutTime(userId)
   }
 }
