@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common'
 import { DatabaseKeys } from 'src/utils/@types/app.types'
-import { Repository } from 'typeorm'
+import { Repository, UpdateResult } from 'typeorm'
 import User from './entities/user.entity'
 import { UserNotFoundError } from './types/user.errors'
 
@@ -40,18 +40,25 @@ export class UserRepository extends Repository<User> {
     throw new UserNotFoundError()
   }
 
-  updateLogoutTime(userId: string) {
+  updateLogoutTime(userId: string): Promise<UpdateResult> {
     return this.update({ id: userId }, { logout: Date.now().toString() })
   }
 
-  async updatePassword(userId: string, hashedPassword: string) {
+  async updatePassword(
+    userId: string,
+    hashedPassword: string,
+  ): Promise<UpdateResult> {
     const user = await this.findByIdOrFail(userId)
     return await this.update(user.id, {
       password: hashedPassword,
     })
   }
 
-  async insertUser(username: string, password: string, email: string) {
+  async insertUser(
+    username: string,
+    password: string,
+    email: string,
+  ): Promise<User> {
     const user = new User()
     user.username = username
     user.password = password
