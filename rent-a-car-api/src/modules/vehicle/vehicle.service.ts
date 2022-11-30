@@ -14,7 +14,7 @@ export class VehicleService {
     return this.vehicleRepository.save(vehicle)
   }
 
-  async updateVehicle(vehicle: Partial<Vehicle>) {
+  async updateVehicle(vehicle: Partial<Vehicle>): Promise<Vehicle> {
     await this.vehicleRepository.findOneByIdOrFail(vehicle.id)
     return this.vehicleRepository.save(vehicle)
   }

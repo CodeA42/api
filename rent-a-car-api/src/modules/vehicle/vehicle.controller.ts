@@ -50,7 +50,9 @@ export class VehicleController {
   @ApiGetVehicle()
   @Get(':uuid')
   @Authentication(authType.accessToken)
-  async getVehicle(@Param('uuid', ParseUUIDPipe) uuid: string) {
+  async getVehicle(
+    @Param('uuid', ParseUUIDPipe) uuid: string,
+  ): Promise<Vehicle> {
     return this.vehicleService.getByIdOrFail(uuid)
   }
 
@@ -58,7 +60,7 @@ export class VehicleController {
   @ApiAddVehicle()
   @Post()
   @Authentication(authType.accessToken)
-  async addVehicle(@Body() vehicle: Partial<Vehicle>) {
+  async addVehicle(@Body() vehicle: Partial<Vehicle>): Promise<Vehicle> {
     return this.vehicleService.addVehicle(vehicle)
   }
 
