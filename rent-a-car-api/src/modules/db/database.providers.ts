@@ -6,6 +6,8 @@ import { DataSource, DataSourceOptions } from 'typeorm'
 import { DatabaseKeys } from 'src/utils/@types/app.types'
 import User from '../user/entities/user.entity'
 import Token from '../authentication/entities/token.entity'
+import Vehicle from '../vehicle/entities/vehicle.entiity'
+import Rentable from '../rentable/entitites/rentable.entity'
 
 let dataSourceOptions: DataSourceOptions
 
@@ -35,7 +37,7 @@ export function getDataSource(isCli: boolean): DataSource {
     username: process.env[database.username],
     password: process.env[database.password],
     database: process.env[database.name],
-    entities: [User, Token],
+    entities: [User, Token, Vehicle, Rentable],
     migrations: [migrationsLocation],
   }
 
