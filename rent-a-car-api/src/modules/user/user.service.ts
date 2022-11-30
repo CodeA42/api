@@ -5,6 +5,7 @@ import { WrongCredentialsError } from '../authentication/types/authentication.er
 import { BcryptService } from '../bcrypt/bcrypt.service'
 import { UserRepository } from './user.repository'
 import { NewPasswordDto } from './types/user.dtos'
+import { UpdateResult } from 'typeorm'
 
 @Injectable()
 export class UserService {
@@ -22,14 +23,14 @@ export class UserService {
   async changePassword(
     userId: string,
     password: NewPasswordDto,
-  ): Promise<void> {
+  ): Promise<UpdateResult> {
     const user = await this.userRepository.findByIdOrFail(userId)
     if (await bcrypt.compare(password.oldPassword, user.password)) {
       const hashedPassword = await this.bcryptService.hashPassword(
         password.newPassword,
       )
 
-      await this.userRepository.updatePassword(userId, hashedPassword)
+      return await this.userRepository.updatePassword(userId, hashedPassword)
     } else {
       throw new WrongCredentialsError()
     }
