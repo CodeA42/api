@@ -3,6 +3,7 @@ export class DatabaseKeys {
   static USER_REPOSITORY = 'USER_REPOSITORY'
   static TOKEN_REPOSITORY = 'TOKEN_REPOSITORY'
   static VEHICLE_REPOSITORY = 'VEHICLE_REPOSITORY'
+  static RENTABLE_REPOSITORY = 'RENTABLE_REPOSITORY'
 }
 
 export type SortOrder = 'ASC' | 'DESC'
