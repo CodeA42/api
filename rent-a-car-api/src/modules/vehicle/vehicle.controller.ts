@@ -35,6 +35,7 @@ export class VehicleController {
   @HttpCode(204)
   @ApiAddVehicle()
   @Get()
+  @Roles(userRole.admin)
   @Authentication(authType.accessToken)
   async searchVehicles(
     @Query('page') page = 1,
@@ -49,6 +50,7 @@ export class VehicleController {
   @HttpCode(204)
   @ApiGetVehicle()
   @Get(':uuid')
+  @Roles(userRole.admin)
   @Authentication(authType.accessToken)
   async getVehicle(
     @Param('uuid', ParseUUIDPipe) uuid: string,
@@ -59,6 +61,7 @@ export class VehicleController {
   @HttpCode(200)
   @ApiAddVehicle()
   @Post()
+  @Roles(userRole.admin)
   @Authentication(authType.accessToken)
   async addVehicle(@Body() vehicle: Partial<Vehicle>): Promise<Vehicle> {
     return this.vehicleService.addVehicle(vehicle)
@@ -67,6 +70,7 @@ export class VehicleController {
   @HttpCode(204)
   @ApiUpdateVehicle()
   @Put()
+  @Roles(userRole.admin)
   @Authentication(authType.accessToken)
   async updateVehicle(@Body() vehicle: Partial<Vehicle>): Promise<Vehicle> {
     return this.vehicleService.updateVehicle(vehicle)
