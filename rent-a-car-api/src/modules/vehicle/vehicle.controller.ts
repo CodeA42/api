@@ -24,6 +24,7 @@ import { VehicleService } from './vehicle.service'
 import {
   ApiAddVehicle,
   ApiDeleteVehicle,
+  ApiGetVehicle,
   ApiUpdateVehicle,
 } from './vehicle.swagger'
 
@@ -46,7 +47,7 @@ export class VehicleController {
   }
 
   @HttpCode(204)
-  @ApiAddVehicle()
+  @ApiGetVehicle()
   @Get(':uuid')
   @Authentication(authType.accessToken)
   async getVehicle(@Param('uuid', ParseUUIDPipe) uuid: string) {
