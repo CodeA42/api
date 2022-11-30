@@ -12,7 +12,7 @@ export class UserRepository extends Repository<User> {
     super(repository.target, repository.manager, repository.queryRunner)
   }
 
-  async findByEmailOrFail(email: string): Promise<User | null> {
+  async findByEmailOrFail(email: string): Promise<User> {
     const user: User = await this.findOne({
       where: {
         email,
@@ -22,7 +22,7 @@ export class UserRepository extends Repository<User> {
     throw new UserNotFoundError()
   }
 
-  async findByUsernameOrFail(username: string): Promise<User | null> {
+  async findByUsernameOrFail(username: string): Promise<User> {
     const user: User = await this.findOne({
       where: {
         username,
