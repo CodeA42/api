@@ -4,24 +4,24 @@ import { userRole } from '../types/user.types'
 @Entity()
 export default class User {
   @PrimaryGeneratedColumn('uuid')
-  id: string
+  id!: string
 
   @Column({
     length: 24,
     unique: true,
   })
-  username: string
+  username!: string
 
   @Column({
     type: 'text',
   })
-  password: string
+  password!: string
 
   @Column({
     type: 'text',
     unique: true,
   })
-  email: string
+  email!: string
 
   @Column({
     type: 'text',
