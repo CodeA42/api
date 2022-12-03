@@ -5,7 +5,7 @@ import {
   CreateDateColumn,
   Entity,
   JoinColumn,
-  OneToOne,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm'
@@ -16,15 +16,35 @@ export default class Rentable {
   id!: string
 
   @ApiProperty()
-  @OneToOne(() => Vehicle)
+  @ManyToOne(() => Vehicle)
   @JoinColumn()
   vehicle!: Vehicle
 
   @Column({
-    type: 'boolean',
+    type: 'decimal',
   })
   @ApiProperty()
-  pricePerDay!: boolean
+  pricePerDay!: number
+
+  @Column({
+    type: 'boolean',
+    default: false,
+  })
+  @ApiProperty()
+  active!: boolean
+
+  @Column({
+    type: 'timestamp',
+  })
+  @ApiProperty()
+  lastActivatedAt: Date
+
+  @Column({
+    type: 'timestamp',
+    nullable: true,
+  })
+  @ApiProperty()
+  rentedAt: Date
 
   @ApiProperty()
   @CreateDateColumn({ type: 'timestamp' })
