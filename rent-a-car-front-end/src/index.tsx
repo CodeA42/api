@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import store from './store/indes';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
-import theme from './store/styles/rootTheme';
+import theme from './styles/rootTheme';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
