@@ -1,25 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import { Box } from '@mui/material';
+import AppRoutes from 'AppRoutes';
+import styles from 'styles/main';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { RootState } from 'store';
+import { useSelector } from 'react-redux';
 
+const authPaths = [
+  '/login',
+  '/forgotten-password',
+  '/reset-password',
+  '/set-password',
+];
 function App() {
+  const { root } = styles();
+  const [height, setHeight] = useState<string>('unset');
+  const location = useLocation();
+  const navigate = useNavigate();
+  const logged = useSelector((state: RootState) => Boolean(state.auth.token));
+
+  useEffect(() => {
+    if (!authPaths.includes(location.pathname) && !logged) navigate('/login');
+  }, [location.pathname, logged, navigate]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box className={root + ' appMainWrapper'}>
+      <Box className="appRoutesWrapper" height={height}>
+        <AppRoutes />
+      </Box>
+    </Box>
   );
 }
 
